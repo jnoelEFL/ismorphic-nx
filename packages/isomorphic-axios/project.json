@@ -1,0 +1,43 @@
+{
+  "sourceRoot": "packages/isomorphic-axios/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/isomorphic-axios",
+        "main": "packages/isomorphic-axios/src/index.ts",
+        "tsConfig": "packages/isomorphic-axios/tsconfig.lib.json",
+        "assets": ["packages/isomorphic-axios/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs isomorphic-axios {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/isomorphic-axios/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/isomorphic-axios"],
+      "options": {
+        "jestConfig": "packages/isomorphic-axios/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "isomorphic-axios": "packages/isomorphic-axios",
+    "isomorphic-env": "packages/isomorphic-env",
+    "isomorphic-utils": "packages/isomorphic-utils",
+    "server-util": "packages/server-util"
+  }
 }

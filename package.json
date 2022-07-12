@@ -2,15 +2,68 @@
   "name": "ismorphic-nx",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
-  "private": true,
-  "dependencies": {},
+  "scripts": {
+    "clean": "nx reset && ./node_modules/.bin/rimraf ./dist/packages/*",
+    "lint": "./node_modules/.bin/bnr lint",
+    "build": "./node_modules/.bin/bnr build",
+    "build:refresh": "./node_modules/.bin/bnr build --skip-nx-cache",
+    "test": "./node_modules/.bin/bnr test"
+  },
+  "betterScripts": {
+    "build": {
+      "command": "nx run-many --target=build --all",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "lint": {
+      "command": "nx run-many --target=lint --all",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "test": {
+      "command": "nx run-many --target=test --all",
+      "env": {
+        "NODE_CONFIG_ENV": "test",
+        "NODE_CONFIG_DIR": "./config",
+        "JEST_UNIT": "./test/jest.json",
+        "DEBUG": "lss:*"
+      }
+    }
+  },
+  "dependencies": {
+    "@lss-isomorphic/logger": "^1.1.8-a9",
+    "express": "^4.18.1",
+    "lodash.truncate": "^4.4.2",
+    "tslib": "^2.3.0"
+  },
   "devDependencies": {
-    "@nrwl/cli": "14.0.5",
-    "@nrwl/js": "14.0.5",
-    "@nrwl/workspace": "14.0.5",
-    "nx": "14.0.5",
+    "@nrwl/cli": "^14.1.4",
+    "@nrwl/eslint-plugin-nx": "^14.1.4",
+    "@nrwl/jest": "^14.1.4",
+    "@nrwl/js": "^14.1.4",
+    "@nrwl/linter": "^14.1.4",
+    "@nrwl/workspace": "^14.1.4",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.5.0",
+    "@types/lodash.truncate": "^4.4.7",
+    "@types/node": "^17.0.31",
+    "@typescript-eslint/eslint-plugin": "~5.18.0",
+    "@typescript-eslint/parser": "~5.18.0",
+    "axios": "^0.27.2",
+    "better-npm-run": "^0.1.1",
+    "camel-case": "^4.1.2",
+    "deep-map-keys": "^2.0.1",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jest": "^28.1.0",
+    "nx": "^14.1.4",
     "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "snake-case": "^3.0.4",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
     "typescript": "~4.6.2"
   }
 }

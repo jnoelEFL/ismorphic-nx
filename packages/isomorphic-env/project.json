@@ -1,0 +1,43 @@
+{
+  "sourceRoot": "packages/isomorphic-env/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/isomorphic-env",
+        "main": "packages/isomorphic-env/src/index.ts",
+        "tsConfig": "packages/isomorphic-env/tsconfig.lib.json",
+        "assets": ["packages/isomorphic-env/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs isomorphic-env {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/isomorphic-env/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/isomorphic-env"],
+      "options": {
+        "jestConfig": "packages/isomorphic-env/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

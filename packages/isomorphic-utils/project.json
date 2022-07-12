@@ -1,0 +1,43 @@
+{
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/isomorphic-utils",
+        "main": "packages/isomorphic-utils/src/index.ts",
+        "tsConfig": "packages/isomorphic-utils/tsconfig.lib.json",
+        "assets": ["packages/isomorphic-utils/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs isomorphic-utils {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/isomorphic-utils/**/*.ts"],
+        "fix": true
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/isomorphic-utils"],
+      "options": {
+        "jestConfig": "packages/isomorphic-utils/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

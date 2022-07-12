@@ -1,0 +1,21 @@
+{
+  "name": "@lss-isomorphic/utils",
+  "version": "1.1.8-a8",
+  "description": "universal utils",
+  "keywords": [
+    "universal",
+    "isomorphic",
+    "utils"
+  ],
+  "author": "Philippe Marzin <p.marzin-ext@lefebvre-sarrut.eu>",
+  "homepage": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "publishConfig": {
+    "registry": " https://nexus.lefebvre-sarrut.eu/repository/npm-private/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "bitbucket.org/elsgestion/sie-efl-gateway-transverse.git"
+  }
+}

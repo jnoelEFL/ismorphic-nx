@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "esModuleInterop": true,
+    "paths": {
+      "@external/debug2": ["packages/external-debug2/src/index.js"],
+      "@lss-external/debug": ["packages/external-debug/src/index.js"],
+      "@lss-isomorphic/axios": ["packages/isomorphic-axios/src/index.ts"],
+      "@lss-isomorphic/env": ["packages/isomorphic-env/src/index.ts"],
+      "@lss-isomorphic/logger": ["packages/isomorphic-logger/src/index.ts"],
+      "@lss-isomorphic/logger2": ["packages/isomorphic-logger2/src/index.js"],
+      "@lss-isomorphic/utils": ["packages/isomorphic-utils/src/index.ts"],
+      "@lss-server/util": ["packages/server-util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
